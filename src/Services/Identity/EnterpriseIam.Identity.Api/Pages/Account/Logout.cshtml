@@ -1,0 +1,5 @@
+@page "/account/logout"
+@model EnterpriseIam.Identity.Api.Pages.Account.LogoutModel
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><title>Sign out - Enterprise IAM</title></head>
+<body><main><h1>Sign out</h1><form method="post">@Html.AntiForgeryToken()<button type="submit">Sign out</button></form></main></body></html>

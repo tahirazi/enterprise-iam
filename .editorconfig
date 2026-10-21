@@ -37,3 +37,7 @@ dotnet_diagnostic.IDE0005.severity = none
 
 [**/Migrations/**/*.cs]
 generated_code = true
+
+# Razor Pages code-behind classes conventionally use the Model suffix.
+[**/Pages/**/*.cshtml.cs]
+dotnet_diagnostic.SA1649.severity = none

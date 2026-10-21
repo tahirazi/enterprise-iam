@@ -40,7 +40,9 @@ public static class IdentityPersistenceRegistration
             options.Password.RequireLowercase = true;
             options.Password.RequireNonAlphanumeric = true;
             options.Lockout.MaxFailedAccessAttempts = 5;
-        }).AddEntityFrameworkStores<IamIdentityDbContext>();
+        }).AddEntityFrameworkStores<IamIdentityDbContext>()
+          .AddSignInManager()
+          .AddDefaultTokenProviders();
 
         services.AddSingleton(TimeProvider.System);
         services.AddScoped<ITenantAccess, TenantAccess>();

@@ -15,8 +15,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B92E2F30-3347-56AD-84EA-C65726E76D5F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
 		.env.example = .env.example
+		.gitattributes = .gitattributes
 		compose.yaml = compose.yaml
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
@@ -89,5 +89,8 @@ Global
 		{2EF81B3F-8734-4178-AE7B-F81E34F94141} = {47A427A1-4E20-5B3E-BAF2-048B345B0FE6}
 		{C21191C8-1D4B-4868-BC24-5E2BAD148149} = {47A427A1-4E20-5B3E-BAF2-048B345B0FE6}
 		{8C94FCD9-5A5E-4F14-9F5B-E609EEE46878} = {47A427A1-4E20-5B3E-BAF2-048B345B0FE6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D5217B8-6245-423B-9445-6DE3E2888740}
 	EndGlobalSection
 EndGlobal
