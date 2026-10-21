@@ -1,3 +1,7 @@
+// <copyright file="IamIdentityDbContext.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Domain.Tenants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -8,15 +12,18 @@ namespace EnterpriseIam.Identity.Infrastructure.Persistence;
 /// <summary>Persists global Identity accounts and explicitly scoped tenant relationships.</summary>
 public sealed class IamIdentityDbContext : IdentityUserContext<ApplicationUser, Guid>
 {
-    /// <summary>Initializes the SQL Server Identity persistence context.</summary>
+    /// <summary>Initializes a new instance of the <see cref="IamIdentityDbContext"/> class.Initializes the SQL Server Identity persistence context.</summary>
     /// <param name="options">Configured EF Core context options.</param>
-    public IamIdentityDbContext(DbContextOptions<IamIdentityDbContext> options) : base(options) { }
+    public IamIdentityDbContext(DbContextOptions<IamIdentityDbContext> options)
+        : base(options)
+    {
+    }
 
     /// <summary>Gets the globally registered organizations.</summary>
-    public DbSet<Tenant> Tenants => Set<Tenant>();
+    public DbSet<Tenant> Tenants => this.Set<Tenant>();
 
     /// <summary>Gets user-to-organization memberships.</summary>
-    public DbSet<TenantMembership> TenantMemberships => Set<TenantMembership>();
+    public DbSet<TenantMembership> TenantMemberships => this.Set<TenantMembership>();
 
     /// <summary>Applies Identity and IAM table mappings and relational constraints.</summary>
     /// <param name="builder">The model configuration builder.</param>

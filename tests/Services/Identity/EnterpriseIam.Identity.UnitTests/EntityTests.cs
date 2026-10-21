@@ -1,3 +1,7 @@
+// <copyright file="EntityTests.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Domain.Common;
 using NUnit.Framework;
 

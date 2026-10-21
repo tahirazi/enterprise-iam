@@ -1,3 +1,7 @@
+// <copyright file="DevelopmentBootstrap.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Infrastructure.Persistence;
 using EnterpriseIam.Identity.Infrastructure.Provisioning;
 using Microsoft.AspNetCore.Identity;

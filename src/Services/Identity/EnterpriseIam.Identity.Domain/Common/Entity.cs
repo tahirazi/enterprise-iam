@@ -1,3 +1,7 @@
+// <copyright file="Entity.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Domain.Common;
 
 /// <summary>
@@ -12,5 +16,7 @@ public abstract class Entity
     {
         get;
         protected init;
-    } = Guid.NewGuid();
+    }
+
+    = Guid.NewGuid();
 }

@@ -1,3 +1,7 @@
+// <copyright file="ITenantMemberReader.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Application.Abstractions;
 
 /// <summary>Restricts tenant-scoped membership reads to an authorized actor.</summary>

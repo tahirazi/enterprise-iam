@@ -1,3 +1,7 @@
+// <copyright file="SystemInfoResponse.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Api.Contracts;
 
 /// <summary>

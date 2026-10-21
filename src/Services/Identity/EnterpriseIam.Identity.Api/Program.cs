@@ -1,3 +1,7 @@
+// <copyright file="Program.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Api.Bootstrap;
 using EnterpriseIam.Identity.Api.Contracts;
 using EnterpriseIam.Identity.Infrastructure.DependencyInjection;

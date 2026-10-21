@@ -1,3 +1,7 @@
+// <copyright file="TenantBootstrapProvisioner.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Domain.Tenants;
 using EnterpriseIam.Identity.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
@@ -8,11 +12,11 @@ namespace EnterpriseIam.Identity.Infrastructure.Provisioning;
 /// <summary>Provisions an organization and initial account under an internal transaction.</summary>
 internal sealed class TenantBootstrapProvisioner : ITenantBootstrapProvisioner
 {
-    private readonly IamIdentityDbContext _database;
-    private readonly UserManager<ApplicationUser> _users;
-    private readonly TimeProvider _time;
+    private readonly IamIdentityDbContext database;
+    private readonly UserManager<ApplicationUser> users;
+    private readonly TimeProvider time;
 
-    /// <summary>Constructs an internal provisioning operation.</summary>
+    /// <summary>Initializes a new instance of the <see cref="TenantBootstrapProvisioner"/> class.Constructs an internal provisioning operation.</summary>
     /// <param name="database">The SQL Server context.</param>
     /// <param name="users">The Identity framework account manager.</param>
     /// <param name="time">The time source for audit metadata.</param>
@@ -21,9 +25,9 @@ internal sealed class TenantBootstrapProvisioner : ITenantBootstrapProvisioner
         UserManager<ApplicationUser> users,
         TimeProvider time)
     {
-        _database = database;
-        _users = users;
-        _time = time;
+        this.database = database;
+        this.users = users;
+        this.time = time;
     }
 
     /// <inheritdoc />
@@ -36,7 +40,7 @@ internal sealed class TenantBootstrapProvisioner : ITenantBootstrapProvisioner
         CancellationToken cancellationToken)
     {
         // This internal service must only be called from trusted provisioning tooling.
-        var now = _time.GetUtcNow().UtcDateTime;
+        var now = this.time.GetUtcNow().UtcDateTime;
         var tenant = Tenant.Create(tenantName, tenantSlug, now);
         var user = new ApplicationUser
         {
@@ -44,22 +48,22 @@ internal sealed class TenantBootstrapProvisioner : ITenantBootstrapProvisioner
             UserName = userName,
             Email = email,
             CreatedAtUtc = now,
-            UpdatedAtUtc = now
+            UpdatedAtUtc = now,
         };
 
-        await using var transaction = await _database.Database.BeginTransactionAsync(cancellationToken);
-        _database.Tenants.Add(tenant);
-        await _database.SaveChangesAsync(cancellationToken);
+        await using var transaction = await this.database.Database.BeginTransactionAsync(cancellationToken);
+        this.database.Tenants.Add(tenant);
+        await this.database.SaveChangesAsync(cancellationToken);
 
-        var identityResult = await _users.CreateAsync(user, password);
+        var identityResult = await this.users.CreateAsync(user, password);
         if (!identityResult.Succeeded)
         {
             throw new InvalidOperationException("Bootstrap account creation failed: " +
                 string.Join("; ", identityResult.Errors.Select(error => error.Code)));
         }
 
-        _database.TenantMemberships.Add(TenantMembership.Create(tenant.Id, user.Id, now));
-        await _database.SaveChangesAsync(cancellationToken);
+        this.database.TenantMemberships.Add(TenantMembership.Create(tenant.Id, user.Id, now));
+        await this.database.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
         return (tenant.Id, user.Id);
     }

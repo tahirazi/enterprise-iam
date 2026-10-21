@@ -1,3 +1,7 @@
+// <copyright file="Tenant.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Domain.Tenants;
 
 /// <summary>
@@ -11,12 +15,12 @@ public sealed class Tenant
 
     private Tenant(Guid id, string name, string slug, DateTime utcNow)
     {
-        Id = id;
-        Name = name;
-        Slug = slug;
-        Status = TenantStatus.Active;
-        CreatedAtUtc = utcNow;
-        UpdatedAtUtc = utcNow;
+        this.Id = id;
+        this.Name = name;
+        this.Slug = slug;
+        this.Status = TenantStatus.Active;
+        this.CreatedAtUtc = utcNow;
+        this.UpdatedAtUtc = utcNow;
     }
 
     /// <summary>Gets the immutable tenant identifier.</summary>
@@ -84,8 +88,8 @@ public sealed class Tenant
     public void Suspend(DateTime utcNow)
     {
         ValidateUtc(utcNow);
-        Status = TenantStatus.Suspended;
-        UpdatedAtUtc = utcNow;
+        this.Status = TenantStatus.Suspended;
+        this.UpdatedAtUtc = utcNow;
     }
 
     /// <summary>Restores access for an eligible suspended organization.</summary>
@@ -93,8 +97,8 @@ public sealed class Tenant
     public void Activate(DateTime utcNow)
     {
         ValidateUtc(utcNow);
-        Status = TenantStatus.Active;
-        UpdatedAtUtc = utcNow;
+        this.Status = TenantStatus.Active;
+        this.UpdatedAtUtc = utcNow;
     }
 
     private static void ValidateUtc(DateTime utcNow)

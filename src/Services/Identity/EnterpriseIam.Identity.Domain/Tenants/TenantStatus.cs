@@ -1,3 +1,7 @@
+// <copyright file="TenantStatus.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Domain.Tenants;
 
 /// <summary>
@@ -9,5 +13,5 @@ public enum TenantStatus : byte
     Active = 1,
 
     /// <summary>The organization cannot authorize tenant-scoped requests.</summary>
-    Suspended = 2
+    Suspended = 2,
 }

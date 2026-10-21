@@ -1,3 +1,7 @@
+// <copyright file="IdentityPersistenceRegistration.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using EnterpriseIam.Identity.Application.Abstractions;
 using EnterpriseIam.Identity.Infrastructure.Persistence;
 using EnterpriseIam.Identity.Infrastructure.Provisioning;

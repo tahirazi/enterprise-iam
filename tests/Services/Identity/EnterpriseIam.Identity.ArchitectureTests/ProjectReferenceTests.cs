@@ -1,3 +1,7 @@
+// <copyright file="ProjectReferenceTests.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using System.Xml.Linq;
 using NUnit.Framework;
 

@@ -1,3 +1,7 @@
+// <copyright file="ITenantBootstrapProvisioner.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Infrastructure.Provisioning;
 
 /// <summary>Defines internal-only tenant initialization with a verified new account.</summary>

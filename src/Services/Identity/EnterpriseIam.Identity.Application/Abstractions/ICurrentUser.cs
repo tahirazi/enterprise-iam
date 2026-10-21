@@ -1,3 +1,7 @@
+// <copyright file="ICurrentUser.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Application.Abstractions;
 
 /// <summary>

@@ -1,3 +1,7 @@
+// <copyright file="HealthEndpointTests.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 using Microsoft.AspNetCore.Mvc.Testing;
 using NUnit.Framework;
 

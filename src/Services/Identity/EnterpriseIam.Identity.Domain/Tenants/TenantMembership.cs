@@ -1,33 +1,54 @@
+// <copyright file="TenantMembership.cs" company=""EnterpriseIam">
+// Copyright (c) EnterpriseIam. All rights reserved.
+// </copyright>
+
 namespace EnterpriseIam.Identity.Domain.Tenants;
 
 /// <summary>Represents a globally identified user's membership in one organization.</summary>
 public sealed class TenantMembership
 {
-    private TenantMembership() { }
+    private TenantMembership()
+    {
+    }
 
     private TenantMembership(Guid tenantId, Guid userId, DateTime utcNow)
     {
-        TenantId = tenantId;
-        UserId = userId;
-        Status = MembershipStatus.Active;
-        CreatedAtUtc = utcNow;
-        UpdatedAtUtc = utcNow;
+        this.TenantId = tenantId;
+        this.UserId = userId;
+        this.Status = MembershipStatus.Active;
+        this.CreatedAtUtc = utcNow;
+        this.UpdatedAtUtc = utcNow;
     }
 
     /// <summary>Gets the owning tenant identifier.</summary>
-    public Guid TenantId { get; private set; }
+    public Guid TenantId
+    {
+        get; private set;
+    }
 
     /// <summary>Gets the global user identifier.</summary>
-    public Guid UserId { get; private set; }
+    public Guid UserId
+    {
+        get; private set;
+    }
 
     /// <summary>Gets the membership's authorization eligibility.</summary>
-    public MembershipStatus Status { get; private set; }
+    public MembershipStatus Status
+    {
+        get; private set;
+    }
 
     /// <summary>Gets the UTC creation timestamp.</summary>
-    public DateTime CreatedAtUtc { get; private set; }
+    public DateTime CreatedAtUtc
+    {
+        get; private set;
+    }
 
     /// <summary>Gets the UTC modification timestamp.</summary>
-    public DateTime UpdatedAtUtc { get; private set; }
+    public DateTime UpdatedAtUtc
+    {
+        get; private set;
+    }
 
     /// <summary>Gets the SQL Server concurrency token.</summary>
     public byte[] RowVersion { get; private set; } = [];
@@ -57,7 +78,7 @@ public sealed class TenantMembership
             throw new ArgumentException("UTC timestamp required.", nameof(utcNow));
         }
 
-        Status = MembershipStatus.Suspended;
-        UpdatedAtUtc = utcNow;
+        this.Status = MembershipStatus.Suspended;
+        this.UpdatedAtUtc = utcNow;
     }
 }
