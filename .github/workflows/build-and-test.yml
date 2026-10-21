@@ -1,0 +1,23 @@
+name: Build and Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: Restore
+        run: dotnet restore EnterpriseIam.sln
+      - name: Validate formatting
+        run: dotnet format EnterpriseIam.sln --verify-no-changes --no-restore --severity warn
+      - name: Build
+        run: dotnet build EnterpriseIam.sln --configuration Release --no-restore
+      - name: Test
+        run: dotnet test EnterpriseIam.sln --configuration Release --no-build

@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+*.user
+TestResults/
+coverage/
+node_modules/
+dist/
