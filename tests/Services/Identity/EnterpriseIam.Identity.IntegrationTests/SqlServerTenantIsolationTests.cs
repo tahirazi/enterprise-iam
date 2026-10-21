@@ -7,6 +7,7 @@ using EnterpriseIam.Identity.Domain.Tenants;
 using EnterpriseIam.Identity.Infrastructure.DependencyInjection;
 using EnterpriseIam.Identity.Infrastructure.Persistence;
 using EnterpriseIam.Identity.Infrastructure.Provisioning;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ public sealed class SqlServerTenantIsolationTests
         var configuration = new ConfigurationBuilder().AddInMemoryCollection(
             new Dictionary<string, string?> { ["ConnectionStrings:IdentityDatabase"] = this.connection }).Build();
         services.AddLogging();
+        services.AddDataProtection();
         services.AddIdentityPersistence(configuration);
         this.provider = services.BuildServiceProvider();
         await using var scope = this.provider.CreateAsyncScope();
