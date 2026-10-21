@@ -186,7 +186,9 @@ public sealed class SqlServerTenantIsolationTests
         var provisioner = scope.ServiceProvider.GetRequiredService<ITenantBootstrapProvisioner>();
         var suffix = Guid.NewGuid().ToString("N");
         var result = await provisioner.CreateAsync(
-            "Provisioned Tenant", "bootstrap-" + suffix, "bootstrap-" + suffix,
+            "Provisioned Tenant",
+            "bootstrap-" + suffix,
+            "bootstrap-" + suffix,
             "bootstrap-" + suffix + "@example.test",
             "ValidBootstrapPassword#123",
             CancellationToken.None);
